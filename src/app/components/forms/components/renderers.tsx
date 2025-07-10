@@ -1,20 +1,21 @@
-import { 
-    DateConfig, 
-    DateTimeConfig, 
-    FieldRendererFunction, 
-    FieldRendererTypes, 
-    FieldsetConfig, 
-    InputConfig, 
-    StripMeta 
-} from "../types/form";
-import { DateInput } from "./DateInput";
-import { DatetimeInput } from "./DatetimeInput";
-import { Fieldset } from "./Fieldset";
-import { Input } from "./Input";
 
-export const renderers: Record<FieldRendererTypes, FieldRendererFunction> = {
-  [FieldRendererTypes.Input]: (props) => <Input {...(props as StripMeta<InputConfig>)} />,
-  [FieldRendererTypes.Fieldset]: (props) => <Fieldset {...(props as StripMeta<FieldsetConfig>)} />,
-  [FieldRendererTypes.Date]: (props) => <DateInput {...(props as StripMeta<DateConfig>)} />,
-  [FieldRendererTypes.DateTime]: (props) => <DatetimeInput {...(props as StripMeta<DateTimeConfig>)} />
+import { 
+  DateConfig, 
+  DateTimeConfig, 
+  FieldRendererFunction, 
+  FieldTypes, 
+  FieldsetConfig, 
+  InputConfig, 
+  StripMeta 
+} from "../types/fields";
+import { DateInputField } from "./DateInputField";
+import { DatetimeInputField } from "./DatetimeInputField";
+import { FieldsetField } from "./FieldsetField";
+import { InputField } from "./InputField";
+
+export const renderers: Record<FieldTypes, FieldRendererFunction> = {
+  [FieldTypes.Input]: (props) => <InputField {...(props as StripMeta<InputConfig>)} />,
+  [FieldTypes.Fieldset]: (props) => <FieldsetField {...(props as StripMeta<FieldsetConfig>)} />,
+  [FieldTypes.Date]: (props) => <DateInputField {...(props as StripMeta<DateConfig>)} />,
+  [FieldTypes.DateTime]: (props) => <DatetimeInputField {...(props as StripMeta<DateTimeConfig>)} />
 };

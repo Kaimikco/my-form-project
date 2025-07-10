@@ -1,9 +1,9 @@
 import { tv } from "tailwind-variants";
-import { FieldBase, FieldTypes } from "../types/form";
 import { FieldRenderer } from "../FieldRenderer";
+import { FieldBase, Fields } from "../types/fields";
 
-export type FieldsetProps = FieldBase & {
-	fields: FieldTypes[];
+export type FieldsetFieldProps = FieldBase & {
+	fields: Fields[];
 }
 
 const groupedInputStyles = tv({
@@ -15,10 +15,10 @@ const groupedInputStyles = tv({
 
 const { legend, base } = groupedInputStyles()
 
-export function Fieldset({
+export function FieldsetField({
   fields,
   label
-}: FieldsetProps) {
+}: FieldsetFieldProps) {
 
   return (
     <fieldset className={base()}>

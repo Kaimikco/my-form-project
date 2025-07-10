@@ -16,7 +16,7 @@ export function SubmitButton({ children, className = "" }: SubmitButtonProps) {
         type="submit"
         disabled={isSubmitting}
         className={`
-          px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 
+          px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-800 
           disabled:opacity-50 disabled:cursor-not-allowed transition-colors
           ${className}
         `.trim()}

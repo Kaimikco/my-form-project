@@ -1,12 +1,11 @@
 "use client";
 
 import { useForm, FormProvider } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitButton } from "./components/SubmitButton";
 import { 
   FormConfig,
 } from "./types/form";
-import { extractDefaults, generateSchema } from "./helpers/form";
+import { extractDefaults } from "./helpers/form";
 import { FieldRenderer } from "./FieldRenderer";
 import { useEffect, useMemo, useState } from "react";
 
@@ -22,11 +21,9 @@ export function Form({
   className = "",
 }: FormProps) {
 
-  const schema = generateSchema(config);
   const defaultValues = useMemo(() => extractDefaults(config.fields), [config]);
 
   const form = useForm({
-    resolver: zodResolver(schema),
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues
@@ -39,10 +36,14 @@ export function Form({
     setAllValues(allValues);
   }, [config])
 
+  const handleSubmit = (data: any) => {
+    onSubmit(data);
+  };
+
   return (
     <FormProvider {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(handleSubmit)}
         className={className}
       >
         {config.fields.map((field) => <FieldRenderer key={field.name} {...field} />)}
@@ -54,7 +55,7 @@ export function Form({
         <pre className="text-xs bg-gray-100 p-4 rounded-md overflow-auto">
           {JSON.stringify(allValues, null, 2)}
         </pre>
-      </div>      
+      </div>
     </FormProvider>
   );
 }
