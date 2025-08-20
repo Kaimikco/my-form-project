@@ -1,9 +1,9 @@
 'use client'
 
-import { Form } from "../components/forms/Form";
-import { futureOnly } from "../components/forms/helpers/validation";
-import { FieldTypes } from "../components/forms/types/fields";
-import { FormConfig } from "../components/forms/types/form";
+import { Form } from "@/components/forms/Form";
+import { futureOnly } from "@/components/forms/helpers/validation";
+import { FieldTypes } from "@/components/forms/types/fields";
+import { FormConfig } from "@/components/forms/types/form";
 
 const defaultValues = {
   shortCode: "ABC",

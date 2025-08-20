@@ -2,6 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 import { ComponentProps } from "react";
 
 const headingStyles = tv({
+  base: "",
   variants: {
     level: {
       1: "text-4xl font-bold tracking-tight",
@@ -13,13 +14,14 @@ const headingStyles = tv({
     },
     color: {
       default: "text-gray-900",
+      white: "text-white",
       muted: "text-gray-600",
       primary: "text-blue-600",
       danger: "text-red-600",
     },
   },
   defaultVariants: {
-    level: 1,
+    level: 3,
     color: "default",
   },
 });
@@ -31,7 +33,7 @@ type HeadingLevel = NonNullable<HeadingVariants['level']>;
 type HeadingProps = HeadingVariants & ComponentProps<`h${HeadingLevel}`>;
 
 export function Heading({
-  level = 1,
+  level = 3,
   color = "default",
   className,
   children,
